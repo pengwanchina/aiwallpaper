@@ -15,12 +15,23 @@ export async function downloadAndUploadImage(
   bucketName: string,
   s3Key: string
 ) {
+  console.log(
+    "======Downloading an Uploading: =======",
+    "\nimageUrl is:",
+    imageUrl,
+    "\nbucketName is:",
+    bucketName,
+    "\ns3key is:",
+    s3Key
+  );
   try {
     const response = await axios({
       method: "GET",
       url: imageUrl,
       responseType: "stream",
     });
+
+    console.log("========axios ok:=========\n");
 
     const uploadParams = {
       Bucket: bucketName,
@@ -30,7 +41,7 @@ export async function downloadAndUploadImage(
 
     return s3.upload(uploadParams).promise();
   } catch (e) {
-    console.log("upload failed:", e);
+    console.log("========upload failed:=========\n", e);
     throw e;
   }
 }

@@ -88,10 +88,10 @@ export default function () {
       return;
     }
 
-    if (user.credits && user.credits.left_credits < 1) {
-      toast.error("credits not enough");
-      return;
-    }
+    // if (user.credits && user.credits.left_credits < 1) {
+    //   toast.error("credits not enough");
+    //   return;
+    // }
 
     requestGenWallpaper();
   };

@@ -28,9 +28,9 @@ export async function POST(req: Request) {
     const user_email = user.emailAddresses[0].emailAddress;
 
     const user_credits = await getUserCredits(user_email);
-    if (!user_credits || user_credits.left_credits < 1) {
-      return respErr("credits not enough");
-    }
+    // if (!user_credits || user_credits.left_credits < 1) {
+    //   return respErr("credits not enough");
+    // }
 
     const llm_name = "dall-e-3";
     const img_size = "1792x1024";
@@ -49,16 +49,20 @@ export async function POST(req: Request) {
 
     const raw_img_url = res.data[0].url;
     if (!raw_img_url) {
+      console.log("raw_img_url is null");
       return respErr("generate wallpaper failed");
     }
+    console.log("=====raw_img_url is: =======\n", raw_img_url);
 
     const img_name = encodeURIComponent(description);
     const s3_img = await downloadAndUploadImage(
       raw_img_url,
-      process.env.AWS_BUCKET || "trysai",
+      process.env.AWS_BUCKET || "wphoenix-aiwallpaper-demo",
       `wallpapers/${img_name}.png`
     );
+    console.log("======s3 is ok ========");
     const img_url = s3_img.Location;
+    console.log("s3_img.location is: ", img_url);
 
     const wallpaper: Wallpaper = {
       user_email: user_email,

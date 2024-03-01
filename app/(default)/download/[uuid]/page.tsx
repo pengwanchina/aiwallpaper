@@ -24,13 +24,13 @@ export default async function ({ params }: { params: { uuid: string } }) {
 
   const user_email = user.emailAddresses[0].emailAddress;
   const credits = await getUserCredits(user_email);
-  if (!credits || credits.left_credits < 1) {
-    return (
-      <p className="flex items-center justify-center py-16 text-xl">
-        credits not enough
-      </p>
-    );
-  }
+  // if (!credits || credits.left_credits < 1) {
+  //   return (
+  //     <p className="flex items-center justify-center py-16 text-xl">
+  //       credits not enough
+  //     </p>
+  //   );
+  // }
 
   const img_url = wallpaper.img_url;
 
