@@ -55,7 +55,7 @@ export async function POST(req: Request) {
     const img_name = encodeURIComponent(description);
     const s3_img = await downloadAndUploadImage(
       raw_img_url,
-      process.env.AWS_BUCKET || "trysai",
+      process.env.AWS_BUCKET || "wphoenix-aiwallpaper-demo",
       `wallpapers/${img_name}.png`
     );
     const img_url = s3_img.Location;
