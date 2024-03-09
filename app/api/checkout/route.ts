@@ -6,7 +6,7 @@ import Stripe from "stripe";
 import { currentUser } from "@clerk/nextjs";
 import { genOrderNo } from "@/lib/order";
 
-export const maxDuration = 90;
+export const maxDuration = 9;
 
 export async function POST(req: Request) {
   const user = await currentUser();
