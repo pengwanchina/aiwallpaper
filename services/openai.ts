@@ -5,7 +5,7 @@ export function getOpenAIClient() {
   const apiKey = process.env.OPENAI_API_KEY;
 
   const openai = new OpenAI({
-    baseURL: baseUrl,
+    // baseURL: baseUrl,
     apiKey: apiKey,
   });
 
