@@ -9,7 +9,7 @@ import { getOpenAIClient } from "@/services/openai";
 import { getUserCredits } from "@/services/order";
 import { insertWallpaper } from "@/models/wallpaper";
 
-export const maxDuration = 120;
+export const maxDuration = 90;
 
 export async function POST(req: Request) {
   const client = getOpenAIClient();
